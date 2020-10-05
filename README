@@ -2,7 +2,7 @@
 $ docker run -it archlinux
 # install dependant tools
 $ pacman -Sy --noconfirm git base-devel cmake mingw-w64-gcc python
-# get PKGBUILD from this REPO
+# get PKGBUILD from this/current REPO
 $ git clone https://github.com/bpangWR/archlinux_llvm_project_win64.git
 $ cd archlinux_llvm_project_win64
 # build with user 'nobody', 'root' is not allowded using makepkg
