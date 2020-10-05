@@ -20,7 +20,7 @@ prepare() {
 build() {
     cd "$srcdir/$pkgname-$pkgver/build"
     # makepkg would set these environment variables, but they are invalid for mingw-w64-gcc
-    unset LDFLAGS # CFLAGS CXXFLAGS
+    unset LDFLAGS CFLAGS CXXFLAGS CHOST CPPFLAGS COMMAND_MODE
     cmake ../llvm  -DCMAKE_C_COMPILER=/usr/bin/x86_64-w64-mingw32-gcc \
 	  -DCMAKE_CXX_COMPILER=/usr/bin/x86_64-w64-mingw32-g++ \
 	  -DCMAKE_SYSTEM_NAME=Windows \
