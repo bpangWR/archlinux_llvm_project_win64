@@ -13,7 +13,7 @@ source=($_source_base/$pkgname-$pkgver.tar.xz{,.sig})
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     # do't link "-ldl" for WIN64
-    sed -i "s/^find_library\(DL_LIBRARY_PATH dl\)/#find_library\(DL_LIBRARY_PATH dl\)/" clang/tools/libclang/CMakeLists.txt
+    sed -i -e "s/^find_library(DL_LIBRARY_PATH dl)/#find_library(DL_LIBRARY_PATH dl)/" clang/tools/libclang/CMakeLists.txt
     mkdir -p build
 }
 
@@ -31,7 +31,7 @@ build() {
 	  -DCROSS_TOOLCHAIN_FLAGS_NATIVE="-DCMAKE_C_COMPILER=cc;-DCMAKE_CXX_COMPILER=c++"
 
     n=`lscpu | grep ^CPU\(s\): | cut -f2 -d':'`
-    make -j$n
+    make -j1 VERBOSE=1
 }
 
 check() {
