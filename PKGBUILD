@@ -29,9 +29,7 @@ build() {
 	  -DLLVM_ENABLE_PROJECTS=clang \
 	  -DCMAKE_INSTALL_PREFIX=/WIN64/$pkgname-$pkgver \
 	  -DCROSS_TOOLCHAIN_FLAGS_NATIVE="-DCMAKE_C_COMPILER=cc;-DCMAKE_CXX_COMPILER=c++"
-
-    n=`lscpu | grep ^CPU\(s\): | cut -f2 -d':'`
-    make -j1 VERBOSE=1
+    make -j "$(nproc)"
 }
 
 check() {
