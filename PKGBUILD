@@ -5,7 +5,7 @@ pkgdesc="build clang for WIN64"
 arch=('x86_64')
 url="https://clang.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=('cmake' 'make' 'mingw-w64-gcc')
+makedepends=('cmake' 'make' 'mingw-w64-gcc' 'python')
 
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1
 source=($_source_base/$pkgname-$pkgver.tar.xz{,.sig})
