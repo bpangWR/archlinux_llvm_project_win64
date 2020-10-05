@@ -1,6 +1,6 @@
 
 $ docker run -it archlinux
-$ pacman -Sy --noconfirm git base-devel cmake mingw-w64-gcc
+$ pacman -Sy --noconfirm git base-devel cmake mingw-w64-gcc python
 $ git clone https://github.com/bpangWR/archlinux_llvm_project_win64.git
 $ cd archlinux_llvm_project_win64
 $ chown nobody .
