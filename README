@@ -9,3 +9,4 @@ $ cd archlinux_llvm_project_win64
 $ chown nobody .
 $ sudo -u nobody makepkg --skipinteg
    
+   
