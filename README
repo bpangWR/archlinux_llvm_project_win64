@@ -8,3 +8,4 @@ $ cd archlinux_llvm_project_win64
 # build with user 'nobody', 'root' is not allowded using makepkg
 $ chown nobody .
 $ sudo -u nobody makepkg --skipinteg
+   
