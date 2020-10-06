@@ -9,7 +9,7 @@ makedepends=('cmake' 'make' 'mingw-w64-gcc' 'python')
 
 source=(git+https://github.com/llvm/llvm-project.git)
 
-
+#FIXME: why this function doesn't work?
 pkgver() {
   cd "$srcdir/llvm-project"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
