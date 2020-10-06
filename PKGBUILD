@@ -36,11 +36,11 @@ build() {
 }
 
 check() {
-    cd "$srcdir/$pkgname-$pkgver/build"
+    cd "$srcdir/llvm-project/build"
     ls -l bin/clang.exe
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver/build"
+    cd "$srcdir/llvm-project/build"
     DESTDIR="$pkgdir" make install
 }
