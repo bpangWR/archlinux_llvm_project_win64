@@ -1,5 +1,5 @@
 pkgname=llvm-project
-pkgver=10.0.1
+pkgver=r12.012345
 pkgrel=1
 pkgdesc="build clang for WIN64"
 arch=('x86_64')
@@ -7,18 +7,21 @@ url="https://clang.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('cmake' 'make' 'mingw-w64-gcc' 'python')
 
-_source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1
-source=($_source_base/$pkgname-$pkgver.tar.xz{,.sig})
+source=(git+https://github.com/llvm/llvm-project.git)
+
+
+pkgver() {
+  cd "$srcdir/llvm-project"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    # do't link "-ldl" for WIN64
-    sed -i -e "s/^find_library(DL_LIBRARY_PATH dl)/#find_library(DL_LIBRARY_PATH dl)/" clang/tools/libclang/CMakeLists.txt
+    cd "$srcdir/llvm-project"
     mkdir -p build
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver/build"
+    cd "$srcdir/llvm-project/build"
     # makepkg would set these environment variables, but they are not proper for cross-compiling using mingw-w64-gcc
     unset LDFLAGS CFLAGS CXXFLAGS CHOST CPPFLAGS COMMAND_MODE
     cmake ../llvm  -DCMAKE_C_COMPILER=/usr/bin/x86_64-w64-mingw32-gcc \
